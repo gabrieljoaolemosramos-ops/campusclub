@@ -297,3 +297,185 @@
             font-weight: 700;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
             z-index: 999;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--whatsapp-hover);
+            transform: scale(1.05);
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 2.5rem 5%;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background-color: #080e21;
+        }
+
+        footer strong {
+            color: var(--accent);
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            background-color: var(--bg-card);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid var(--border-subtle);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--instagram);
+            border-color: var(--instagram);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style></head><body>
+
+    <header>
+        <div class="logo">Campus<span>Club</span></div>
+        <nav>
+            <a href="#tamanhos">Formatos</a>
+            <a href="#espacos">Espaços</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#contato">Orçamento</a>
+        </nav>
+    </header>
+
+    <!-- Banner Principal -->
+    <div class="hero">
+        <div class="hero-content">
+            <span class="badge">Londrina – PR</span>
+            <h1>Seu evento merece um <span>lugar especial!</span></h1>
+            <p>Do evento intimista à grande celebração, temos o espaço ideal para você. Locação de espaços, decoração e organização completa em Londrina.</p>
+            <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20CampusClub%20e%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20meu%20evento." target="_blank" class="btn-whatsapp">
+                Solicitar Orçamento no WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Eventos de Todos os Tamanhos -->
+    <section id="tamanhos">
+        <div class="section-title">
+            <h2>Do Pequeno ao Grande Evento</h2>
+            <p>Ambientes versáteis e integrados que se adaptam perfeitamente ao número de convidados e ao estilo da sua comemoração.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Eventos Pequenos</h3>
+                <p>Encontros intimistas, aniversários reservados, reuniões entre amigos e comemorações exclusivas com clima acolhedor e climatizado.</p>
+            </div>
+            <div class="card">
+                <h3>Eventos Médios</h3>
+                <p>Confraternizações, festas temáticas, transmissões especiais e celebrações com pista, DJ, mesas e estrutura de bar completa.</p>
+            </div>
+            <div class="card">
+                <h3>Eventos Grandes</h3>
+                <p>Salões interligados para receber grandes públicos com conforto, circulação fluida e toda a estrutura necessária para uma grande festa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria com Fotos Reais -->
+    <section id="espacos">
+        <div class="section-title">
+            <h2>Conheça o CampusClub</h2>
+            <p>Estilo rústico-moderno, iluminação aconchegante e estrutura pronta para transformar sua ideia em realidade.</p>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="513500413_17963869793930112_506302978678261267_n.jpg" alt="Decoração com balões no CampusClub">
+                <div class="gallery-caption">
+                    <h4>Montagem e Decoração</h4>
+                    <p>Ambientação personalizada para aniversários e datas comemorativas.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="706650341_18001646039930112_3607383557321947214_n.jpg" alt="Estrutura para DJ e festas no CampusClub">
+                <div class="gallery-caption">
+                    <h4>Som, Música e Atmosfera</h4>
+                    <p>Espaço preparado para DJs, pistas animadas e festas privativas.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="749356989_18009176381930112_7593007302439547902_n.jpg" alt="Salões integrados do CampusClub em evento">
+                <div class="gallery-caption">
+                    <h4>Salões Integrados</h4>
+                    <p>Ampla capacidade para eventos temáticos, confraternizações e grandes públicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Cuidamos dos detalhes para você aproveitar cada momento sem preocupação.</p>
+        </div>
+        <div class="services-list">
+            <div class="service-box">
+                <h3>Locação de Espaços</h3>
+                <p>Ambientes climatizados, bar, mobiliário e áreas flexíveis conforme o porte do seu evento.</p>
+            </div>
+            <div class="service-box">
+                <h3>Montagem e Decoração</h3>
+                <p>Produção visual temática, iluminação e ambientação sob medida para a sua festa.</p>
+            </div>
+            <div class="service-box">
+                <h3>Apoio na Organização</h3>
+                <p>Suporte completo antes e durante o evento para garantir que tudo funcione perfeitamente.</p>
+            </div>
+            <div class="service-box">
+                <h3>Planejamento Personalizado</h3>
+                <p>Soluções ajustadas ao seu objetivo, estilo de público e orçamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chamada Final -->
+    <section id="contato">
+        <div class="cta-banner">
+            <h2>Vamos planejar o seu evento em Londrina?</h2>
+            <p>Chame nossa equipe no WhatsApp, conte a data e o tamanho da sua festa e receba uma proposta personalizada.</p>
+            <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Quero%20verificar%20disponibilidade%20de%20data%20e%20or%C3%A7amento%20no%20CampusClub." target="_blank" class="btn-whatsapp">
+                Falar com o CampusClub (43) 98813-5787
+            </a>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante -->
+    <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20eventos%20no%20CampusClub." target="_blank" class="whatsapp-float">
+        WhatsApp • Orçamento
+    </a>
+
+    <footer>
+        <p><strong>CampusClub</strong> — Locação de Espaços e Organização de Eventos • Londrina – PR</p>
+        <p style="margin-top: 0.4rem;">WhatsApp: (43) 98813-5787</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/campuscllub" target="_blank">
+                📷 Acompanhe no Instagram: @campuscllub
+            </a>
+        </div>
+    </footer></body></html>
