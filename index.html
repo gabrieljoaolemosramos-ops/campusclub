@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusClub | Locação de Espaços e Eventos em Londrina – PR</title>
+    <style>
+        :root {
+            --bg-dark: #141210;
+            --bg-card: #1f1b18;
+            --accent: #d97724;
+            --accent-hover: #f08a35;
+            --text-light: #f5f2eb;
+            --text-muted: #b8b0a4;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #20b858;
+            --instagram: #E1306C;
+            --instagram-hover: #c1255b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: rgba(20, 18, 16, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #2e2823;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Banner Principal (Hero) */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 5%;
+            background: linear-gradient(rgba(20, 18, 16, 0.72), rgba(20, 18, 16, 0.88)),
+                        url('foto-salao-cheio.jpg') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(217, 119, 36, 0.2);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--whatsapp);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 0.95rem 2rem;
+            border-radius: 8px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tamanhos de Eventos */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid #2e2823;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            font-size: 1.35rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        /* Galeria dos Espaços */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2e2823;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 1.2rem;
+        }
+
+        .gallery-caption h4 {
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .gallery-caption p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Serviços */
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-box {
+            background-color: var(--bg-card);
+            padding: 1.8rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .service-box h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .service-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Final */
+        .cta-banner {
+            background: linear-gradient(135deg, #261e18, #1a1512);
+            border: 1px solid #3a2e25;
+            border-radius: 16px;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .cta-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: var(--whatsapp);
+            color: #fff;
+            padding: 0.9rem 1.3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--whatsapp-hover);
+            transform: scale(1.05);
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 2.5rem 5%;
+            border-top: 1px solid #2e2823;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            background-color: var(--bg-card);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid #2e2823;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--instagram);
+            border-color: var(--instagram);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Campus<span>Club</span></div>
+        <nav>
+            <a href="#tamanhos">Formatos</a>
+            <a href="#espacos">Espaços</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#contato">Orçamento</a>
+        </nav>
+    </header>
+
+    <!-- Banner Principal -->
+    <div class="hero">
+        <div class="hero-content">
+            <span class="badge">Londrina – PR</span>
+            <h1>Seu evento merece um lugar especial!</h1>
+            <p>Do evento intimista à grande celebração, temos o espaço ideal para você. Locação de espaços, decoração e organização completa em Londrina.</p>
+            <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20CampusClub%20e%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20meu%20evento." target="_blank" class="btn-whatsapp">
+                Solicitar Orçamento no WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Eventos de Todos os Tamanhos -->
+    <section id="tamanhos">
+        <div class="section-title">
+            <h2>Do Pequeno ao Grande Evento</h2>
+            <p>Ambientes versáteis e integrados que se adaptam perfeitamente ao número de convidados e ao estilo da sua comemoração.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Eventos Pequenos</h3>
+                <p>Encontros intimistas, aniversários reservados, reuniões entre amigos e comemorações exclusivas com clima acolhedor e climatizado.</p>
+            </div>
+            <div class="card">
+                <h3>Eventos Médios</h3>
+                <p>Confraternizações, festas temáticas, transmissões especiais e celebrações com pista, DJ, mesas e estrutura de bar completa.</p>
+            </div>
+            <div class="card">
+                <h3>Eventos Grandes</h3>
+                <p>Salões interligados para receber grandes públicos com conforto, circulação fluida e toda a estrutura necessária para uma grande festa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria com Fotos Reais -->
+    <section id="espacos">
+        <div class="section-title">
+            <h2>Conheça o CampusClub</h2>
+            <p>Estilo rústico-moderno, iluminação aconchegante e estrutura pronta para transformar sua ideia em realidade.</p>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="foto-baloes.jpg" alt="Decoração com balões no CampusClub">
+                <div class="gallery-caption">
+                    <h4>Montagem e Decoração</h4>
+                    <p>Ambientação personalizada para aniversários e datas comemorativas.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto-dj.jpg" alt="Estrutura para DJ e festas no CampusClub">
+                <div class="gallery-caption">
+                    <h4>Som, Música e Atmosfera</h4>
+                    <p>Espaço preparado para DJs, pistas animadas e festas privativas.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="foto-salao-cheio.jpg" alt="Salões integrados do CampusClub em evento">
+                <div class="gallery-caption">
+                    <h4>Salões Integrados</h4>
+                    <p>Ampla capacidade para eventos temáticos, confraternizações e grandes públicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Cuidamos dos detalhes para você aproveitar cada momento sem preocupação.</p>
+        </div>
+        <div class="services-list">
+            <div class="service-box">
+                <h3>Locação de Espaços</h3>
+                <p>Ambientes climatizados, bar, mobiliário e áreas flexíveis conforme o porte do seu evento.</p>
+            </div>
+            <div class="service-box">
+                <h3>Montagem e Decoração</h3>
+                <p>Produção visual temática, iluminação e ambientação sob medida para a sua festa.</p>
+            </div>
+            <div class="service-box">
+                <h3>Apoio na Organização</h3>
+                <p>Suporte completo antes e durante o evento para garantir que tudo funcione perfeitamente.</p>
+            </div>
+            <div class="service-box">
+                <h3>Planejamento Personalizado</h3>
+                <p>Soluções ajustadas ao seu objetivo, estilo de público e orçamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chamada Final -->
+    <section id="contato">
+        <div class="cta-banner">
+            <h2>Vamos planejar o seu evento em Londrina?</h2>
+            <p>Chame nossa equipe no WhatsApp, conte a data e o tamanho da sua festa e receba uma proposta personalizada.</p>
+            <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Quero%20verificar%20disponibilidade%20de%20data%20e%20or%C3%A7amento%20no%20CampusClub." target="_blank" class="btn-whatsapp">
+                Falar com o CampusClub (43) 98813-5787
+            </a>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante -->
+    <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20eventos%20no%20CampusClub." target="_blank" class="whatsapp-float">
+        WhatsApp • Orçamento
+    </a>
+
+    <footer>
+        <p><strong>CampusClub</strong> — Locação de Espaços e Organização de Eventos • Londrina – PR</p>
+        <p style="margin-top: 0.4rem;">WhatsApp: (43) 98813-5787</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/campuscllub" target="_blank">
+                📷 Acompanhe no Instagram: @campuscllub
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
