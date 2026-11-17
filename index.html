@@ -1,481 +1,433 @@
-<!DOCTYPE html><html lang="pt-BR"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusClub | Locação de Espaços e Eventos em Londrina – PR</title>
-    <style>
-        :root {
-            --bg-dark: #0b132b;
-            --bg-card: #1c2541;
-            --border-subtle: #2b3861;
-            --accent: #f97316;
-            --accent-hover: #fb923c;
-            --text-light: #f8fafc;
-            --text-muted: #cbd5e1;
-            --whatsapp: #25D366;
-            --whatsapp-hover: #20b858;
-            --instagram: #E1306C;
-            --instagram-hover: #c1255b;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampusClub | Locação de Espaços e Eventos em Londrina – PR</title>
+<meta name="description" content="Locação de espaços, decoração e organização de eventos em Londrina – PR. Do evento intimista à grande celebração. Peça seu orçamento pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b132b;
+    --bg-alt: #0f1936;
+    --card: #162244;
+    --line: #26345f;
+    --accent: #f97316;
+    --accent-soft: #fb923c;
+    --text: #f8fafc;
+    --muted: #b6c2d9;
+    --wa: #25d366;
+    --wa-hover: #1fb558;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --radius: 14px;
+    --header-h: 72px;
+  }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
 
-        /* Cabeçalho */
-        header {
-            background-color: rgba(11, 19, 43, 0.95);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-subtle);
-            backdrop-filter: blur(8px);
-        }
+  .container { width: min(1180px, 100% - 2.5rem); margin-inline: auto; }
+  section { padding: clamp(4rem, 9vw, 7rem) 0; }
 
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--text-light);
-        }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .9rem;
+  }
+  .section-head { max-width: 640px; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+  .section-head h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
+  .section-head p { color: var(--muted); margin-top: 1rem; }
 
-        .logo span {
-            color: var(--accent);
-        }
+  /* Botões */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+    letter-spacing: .06em; text-transform: uppercase; text-decoration: none;
+    padding: .9rem 1.9rem; border-radius: 8px; border: 2px solid transparent;
+    cursor: pointer; transition: transform .25s, background-color .25s, border-color .25s, color .25s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-wa { background: var(--wa); color: #07230f; }
+  .btn-wa:hover { background: var(--wa-hover); }
+  .btn-ghost { border-color: var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+  /* Navegação */
+  header {
+    position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 100;
+    display: flex; align-items: center;
+    background: rgba(11, 19, 43, .0);
+    border-bottom: 1px solid transparent;
+    transition: background-color .3s, border-color .3s, backdrop-filter .3s;
+  }
+  header.scrolled {
+    background: rgba(11, 19, 43, .92);
+    border-color: var(--line);
+    backdrop-filter: blur(10px);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .logo {
+    font-family: var(--font-display); font-weight: 800; font-size: 1.9rem;
+    letter-spacing: .04em; text-transform: uppercase; text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-weight: 500; font-size: .98rem; color: var(--muted);
+    transition: color .25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links .btn { padding: .55rem 1.2rem; font-size: 1rem; color: #07230f; }
+  .nav-links .btn:hover { color: #07230f; }
 
-        nav a:hover {
-            color: var(--accent);
-        }
+  .menu-toggle {
+    display: none; background: none; border: 0; cursor: pointer;
+    width: 44px; height: 44px; position: relative;
+  }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after {
+    content: ""; position: absolute; left: 10px; right: 10px; height: 2px;
+    background: var(--text); transition: transform .3s, opacity .3s;
+  }
+  .menu-toggle span { top: 21px; }
+  .menu-toggle span::before { left: 0; right: 0; top: -7px; }
+  .menu-toggle span::after { left: 0; right: 0; top: 7px; }
+  .menu-toggle[aria-expanded="true"] span { background: transparent; }
+  .menu-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
 
-        /* Banner Principal (Hero) */
-        .hero {
-            position: relative;
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem 5%;
-            background: linear-gradient(rgba(11, 19, 43, 0.74), rgba(11, 19, 43, 0.92)),
-                        url('749356989_18009176381930112_7593007302439547902_n.jpg') center/cover no-repeat;
-        }
+  /* Hero */
+  .hero {
+    min-height: 100svh; display: flex; align-items: center;
+    padding: calc(var(--header-h) + 3rem) 0 4rem;
+    background:
+      linear-gradient(180deg, rgba(11,19,43,.72) 0%, rgba(11,19,43,.88) 70%, var(--bg) 100%),
+      url('749356989_18009176381930112_7593007302439547902_n.jpg') center / cover no-repeat;
+  }
+  .hero h1 { font-size: clamp(3rem, 9vw, 6.4rem); font-weight: 800; max-width: 14ch; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { max-width: 560px; color: var(--muted); font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 1.4rem 0 2.2rem; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
 
-        .hero-content {
-            max-width: 800px;
-        }
+  /* Sobre */
+  .about { background: var(--bg-alt); }
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+  .about-text h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; margin-bottom: 1.2rem; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .sizes { display: grid; gap: .9rem; margin-top: 1.8rem; }
+  .size {
+    display: flex; gap: 1rem; align-items: baseline;
+    border-left: 3px solid var(--accent); padding: .2rem 0 .2rem 1rem;
+  }
+  .size strong { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .04em; text-transform: uppercase; min-width: 6.5rem; }
+  .size span { color: var(--muted); font-size: .98rem; }
 
-        .badge {
-            display: inline-block;
-            background-color: rgba(249, 115, 22, 0.16);
-            color: var(--accent-hover);
-            border: 1px solid var(--accent);
-            padding: 0.35rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+  .mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px; gap: .8rem; }
+  .mosaic figure { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); }
+  .mosaic figure:first-child { grid-row: span 2; }
+  .mosaic img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .mosaic figure:hover img { transform: scale(1.06); }
 
-        .hero h1 {
-            font-size: 3rem;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
+  /* Serviços */
+  .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+  .service {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 2rem; transition: transform .3s, border-color .3s;
+  }
+  .service:hover { transform: translateY(-5px); border-color: var(--accent); }
+  .service .num { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--accent); letter-spacing: .15em; }
+  .service h3 { font-size: 1.7rem; font-weight: 700; margin: .5rem 0 .7rem; }
+  .service p { color: var(--muted); font-size: 1rem; }
 
-        .hero h1 span {
-            color: var(--accent);
-        }
+  /* Depoimentos */
+  .testimonials { background: var(--bg-alt); }
+  .t-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+  .t-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; }
+  .t-card blockquote { font-size: 1.1rem; margin-bottom: 1.2rem; }
+  .t-card figcaption { color: var(--accent-soft); font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .06em; text-transform: uppercase; }
+  .t-card figcaption small { display: block; color: var(--muted); font-family: var(--font-body); font-size: .85rem; text-transform: none; letter-spacing: 0; }
+  .t-empty {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: clamp(2rem, 5vw, 3.5rem); text-align: center; max-width: 760px; margin-inline: auto;
+  }
+  .t-empty h3 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: .8rem; }
+  .t-empty p { color: var(--muted); margin-bottom: 1.8rem; }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
+  /* Contato */
+  .contact-box {
+    background: linear-gradient(135deg, var(--card), #0e1832);
+    border: 1px solid var(--line); border-radius: 20px;
+    padding: clamp(2.2rem, 6vw, 4.5rem); text-align: center;
+  }
+  .contact-box h2 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; max-width: 16ch; margin: 0 auto 1rem; }
+  .contact-box h2 em { font-style: normal; color: var(--accent); }
+  .contact-box p { color: var(--muted); max-width: 520px; margin: 0 auto 2rem; }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background-color: var(--whatsapp);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 0.95rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
-            transition: transform 0.2s, background-color 0.3s;
-        }
+  /* Rodapé */
+  footer { border-top: 1px solid var(--line); padding: 2.5rem 0; background: #080e21; }
+  .footer-inner { display: flex; flex-direction: column; gap: 1.2rem; align-items: center; text-align: center; color: var(--muted); font-size: .95rem; }
+  .footer-inner a { color: var(--text); text-decoration: none; transition: color .25s; }
+  .footer-inner a:hover { color: var(--accent); }
+  .footer-links { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; justify-content: center; }
 
-        .btn-whatsapp:hover {
-            background-color: var(--whatsapp-hover);
-            transform: translateY(-2px);
-        }
+  /* WhatsApp flutuante */
+  .wa-float {
+    position: fixed; right: 20px; bottom: 20px; z-index: 90;
+    background: var(--wa); color: #07230f; text-decoration: none;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase;
+    padding: .8rem 1.3rem; border-radius: 50px; box-shadow: 0 8px 24px rgba(0,0,0,.45);
+    transition: transform .25s, background-color .25s;
+  }
+  .wa-float:hover { transform: scale(1.05); background: var(--wa-hover); }
 
-        /* Seções Gerais */
-        section {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  /* Animações de scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; transition-delay: var(--d, 0s); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition-duration: .01ms !important; }
+  }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+  /* Tablet */
+  @media (min-width: 640px) {
+    .services-grid, .t-grid { grid-template-columns: repeat(2, 1fr); }
+    .mosaic { grid-template-rows: 260px 260px; }
+  }
 
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
+  /* Desktop */
+  @media (min-width: 980px) {
+    .about-grid { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+    .services-grid { grid-template-columns: repeat(4, 1fr); }
+    .t-grid { grid-template-columns: repeat(3, 1fr); }
+    .mosaic { grid-template-rows: 300px 300px; }
+    .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+  }
 
-        .section-title p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+  /* Mobile: menu */
+  @media (max-width: 859px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+      position: fixed; inset: var(--header-h) 0 auto 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: rgba(11, 19, 43, .98); border-bottom: 1px solid var(--line);
+      padding: 1rem 1.25rem 1.5rem;
+      transform: translateY(-120%); transition: transform .35s ease;
+    }
+    .nav-links.open { transform: none; }
+    .nav-links li a:not(.btn) { display: block; padding: .9rem 0; font-size: 1.1rem; border-bottom: 1px solid var(--line); }
+    .nav-links li:last-child { margin-top: 1rem; }
+    .wa-float { right: 14px; bottom: 14px; padding: .7rem 1.1rem; }
+  }
+</style>
+</head>
+<body>
 
-        /* Tamanhos de Eventos */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-        }
+<header id="header">
+  <div class="container nav">
+    <a href="#inicio" class="logo">Campus<span>Club</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a class="btn btn-wa" href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20CampusClub%20e%20gostaria%20de%20pedir%20um%20or%C3%A7amento." target="_blank" rel="noopener">Orçamento</a></li>
+    </ul>
+  </div>
+</header>
 
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .card h3 {
-            color: var(--accent);
-            font-size: 1.35rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-        }
-
-        /* Galeria dos Espaços */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-subtle);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-caption {
-            padding: 1.2rem;
-        }
-
-        .gallery-caption h4 {
-            margin-bottom: 0.3rem;
-            font-size: 1.1rem;
-            color: var(--accent-hover);
-        }
-
-        .gallery-caption p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Serviços */
-        .services-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .service-box {
-            background-color: var(--bg-card);
-            padding: 1.8rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-subtle);
-            border-left: 4px solid var(--accent);
-        }
-
-        .service-box h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.15rem;
-            color: var(--accent-hover);
-        }
-
-        .service-box p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* CTA Final */
-        .cta-banner {
-            background: linear-gradient(135deg, #1c2541, #111a36);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 3.5rem 2rem;
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .cta-banner h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .cta-banner p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Botão Flutuante WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background-color: var(--whatsapp);
-            color: #fff;
-            padding: 0.9rem 1.3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-            z-index: 999;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            background-color: var(--whatsapp-hover);
-            transform: scale(1.05);
-        }
-
-        /* Rodapé */
-        footer {
-            text-align: center;
-            padding: 2.5rem 5%;
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background-color: #080e21;
-        }
-
-        footer strong {
-            color: var(--accent);
-        }
-
-        .social-links {
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            background-color: var(--bg-card);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            border: 1px solid var(--border-subtle);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--instagram);
-            border-color: var(--instagram);
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            nav {
-                display: none;
-            }
-        }
-    </style></head><body>
-
-    <header>
-        <div class="logo">Campus<span>Club</span></div>
-        <nav>
-            <a href="#tamanhos">Formatos</a>
-            <a href="#espacos">Espaços</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#contato">Orçamento</a>
-        </nav>
-    </header>
-
-    <!-- Banner Principal -->
-    <div class="hero">
-        <div class="hero-content">
-            <span class="badge">Londrina – PR</span>
-            <h1>Seu evento merece um <span>lugar especial!</span></h1>
-            <p>Do evento intimista à grande celebração, temos o espaço ideal para você. Locação de espaços, decoração e organização completa em Londrina.</p>
-            <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20CampusClub%20e%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20meu%20evento." target="_blank" class="btn-whatsapp">
-                Solicitar Orçamento no WhatsApp
-            </a>
-        </div>
+<main>
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <span class="eyebrow reveal">Londrina – PR</span>
+      <h1 class="reveal" style="--d:.1s">Seu evento merece um <em>lugar especial</em></h1>
+      <p class="reveal" style="--d:.2s">Do evento intimista à grande celebração, temos o espaço ideal para você. Locação de espaços, decoração e organização completa em Londrina.</p>
+      <div class="hero-actions reveal" style="--d:.3s">
+        <a class="btn btn-wa" href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20CampusClub%20e%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20meu%20evento." target="_blank" rel="noopener">Solicitar orçamento</a>
+        <a class="btn btn-ghost" href="#sobre">Conhecer o espaço</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Eventos de Todos os Tamanhos -->
-    <section id="tamanhos">
-        <div class="section-title">
-            <h2>Do Pequeno ao Grande Evento</h2>
-            <p>Ambientes versáteis e integrados que se adaptam perfeitamente ao número de convidados e ao estilo da sua comemoração.</p>
+  <!-- Sobre -->
+  <section class="about" id="sobre">
+    <div class="container about-grid">
+      <div class="about-text">
+        <span class="eyebrow reveal">Sobre o CampusClub</span>
+        <h2 class="reveal" style="--d:.1s">Estrutura pronta para a sua ideia</h2>
+        <p class="reveal" style="--d:.15s">Estilo rústico-moderno, iluminação aconchegante e ambientes climatizados. O CampusClub reúne salões integrados, bar e mobiliário para receber festas de qualquer porte, com circulação fluida e conforto para os convidados.</p>
+        <p class="reveal" style="--d:.2s">Cuidamos dos detalhes para você aproveitar cada momento sem preocupação.</p>
+        <div class="sizes">
+          <div class="size reveal" style="--d:.25s"><strong>Pequenos</strong><span>Encontros intimistas, aniversários reservados e reuniões entre amigos.</span></div>
+          <div class="size reveal" style="--d:.3s"><strong>Médios</strong><span>Confraternizações e festas temáticas com pista, DJ, mesas e bar.</span></div>
+          <div class="size reveal" style="--d:.35s"><strong>Grandes</strong><span>Salões interligados para grandes públicos e grandes festas.</span></div>
         </div>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Eventos Pequenos</h3>
-                <p>Encontros intimistas, aniversários reservados, reuniões entre amigos e comemorações exclusivas com clima acolhedor e climatizado.</p>
-            </div>
-            <div class="card">
-                <h3>Eventos Médios</h3>
-                <p>Confraternizações, festas temáticas, transmissões especiais e celebrações com pista, DJ, mesas e estrutura de bar completa.</p>
-            </div>
-            <div class="card">
-                <h3>Eventos Grandes</h3>
-                <p>Salões interligados para receber grandes públicos com conforto, circulação fluida e toda a estrutura necessária para uma grande festa.</p>
-            </div>
-        </div>
-    </section>
+      </div>
+      <div class="mosaic">
+        <figure class="reveal"><img src="749356989_18009176381930112_7593007302439547902_n.jpg" alt="Salões integrados do CampusClub durante um evento" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.15s"><img src="706650341_18001646039930112_3607383557321947214_n.jpg" alt="Estrutura para DJ e festas no CampusClub" loading="lazy"></figure>
+        <figure class="reveal" style="--d:.3s"><img src="513500413_17963869793930112_506302978678261267_n.jpg" alt="Decoração com balões no CampusClub" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
 
-    <!-- Galeria com Fotos Reais -->
-    <section id="espacos">
-        <div class="section-title">
-            <h2>Conheça o CampusClub</h2>
-            <p>Estilo rústico-moderno, iluminação aconchegante e estrutura pronta para transformar sua ideia em realidade.</p>
-        </div>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="513500413_17963869793930112_506302978678261267_n.jpg" alt="Decoração com balões no CampusClub">
-                <div class="gallery-caption">
-                    <h4>Montagem e Decoração</h4>
-                    <p>Ambientação personalizada para aniversários e datas comemorativas.</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="706650341_18001646039930112_3607383557321947214_n.jpg" alt="Estrutura para DJ e festas no CampusClub">
-                <div class="gallery-caption">
-                    <h4>Som, Música e Atmosfera</h4>
-                    <p>Espaço preparado para DJs, pistas animadas e festas privativas.</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="749356989_18009176381930112_7593007302439547902_n.jpg" alt="Salões integrados do CampusClub em evento">
-                <div class="gallery-caption">
-                    <h4>Salões Integrados</h4>
-                    <p>Ampla capacidade para eventos temáticos, confraternizações e grandes públicos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Serviços</span>
+        <h2 class="reveal" style="--d:.1s">Tudo para o seu evento acontecer</h2>
+      </div>
+      <div class="services-grid">
+        <article class="service reveal">
+          <span class="num">01</span>
+          <h3>Locação de espaços</h3>
+          <p>Ambientes climatizados, bar, mobiliário e áreas flexíveis conforme o porte do seu evento.</p>
+        </article>
+        <article class="service reveal" style="--d:.1s">
+          <span class="num">02</span>
+          <h3>Montagem e decoração</h3>
+          <p>Produção visual temática, iluminação e ambientação sob medida para a sua festa.</p>
+        </article>
+        <article class="service reveal" style="--d:.2s">
+          <span class="num">03</span>
+          <h3>Apoio na organização</h3>
+          <p>Suporte completo antes e durante o evento para garantir que tudo funcione perfeitamente.</p>
+        </article>
+        <article class="service reveal" style="--d:.3s">
+          <span class="num">04</span>
+          <h3>Planejamento personalizado</h3>
+          <p>Soluções ajustadas ao seu objetivo, estilo de público e orçamento.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- Serviços -->
-    <section id="servicos">
-        <div class="section-title">
-            <h2>Nossos Serviços</h2>
-            <p>Cuidamos dos detalhes para você aproveitar cada momento sem preocupação.</p>
-        </div>
-        <div class="services-list">
-            <div class="service-box">
-                <h3>Locação de Espaços</h3>
-                <p>Ambientes climatizados, bar, mobiliário e áreas flexíveis conforme o porte do seu evento.</p>
-            </div>
-            <div class="service-box">
-                <h3>Montagem e Decoração</h3>
-                <p>Produção visual temática, iluminação e ambientação sob medida para a sua festa.</p>
-            </div>
-            <div class="service-box">
-                <h3>Apoio na Organização</h3>
-                <p>Suporte completo antes e durante o evento para garantir que tudo funcione perfeitamente.</p>
-            </div>
-            <div class="service-box">
-                <h3>Planejamento Personalizado</h3>
-                <p>Soluções ajustadas ao seu objetivo, estilo de público e orçamento.</p>
-            </div>
-        </div>
-    </section>
+  <!-- Depoimentos -->
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Depoimentos</span>
+        <h2 class="reveal" style="--d:.1s">Quem já comemorou aqui</h2>
+      </div>
+      <div id="testimonialsMount"></div>
+    </div>
+  </section>
 
-    <!-- Chamada Final -->
-    <section id="contato">
-        <div class="cta-banner">
-            <h2>Vamos planejar o seu evento em Londrina?</h2>
-            <p>Chame nossa equipe no WhatsApp, conte a data e o tamanho da sua festa e receba uma proposta personalizada.</p>
-            <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Quero%20verificar%20disponibilidade%20de%20data%20e%20or%C3%A7amento%20no%20CampusClub." target="_blank" class="btn-whatsapp">
-                Falar com o CampusClub (43) 98813-5787
-            </a>
+  <!-- Contato -->
+  <section id="contato">
+    <div class="container">
+      <div class="contact-box reveal">
+        <h2>Vamos planejar o seu <em>evento?</em></h2>
+        <p>Chame a equipe no WhatsApp, conte a data e o tamanho da sua festa e receba uma proposta personalizada.</p>
+        <div class="contact-actions">
+          <a class="btn btn-wa" href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Quero%20verificar%20disponibilidade%20de%20data%20e%20or%C3%A7amento%20no%20CampusClub." target="_blank" rel="noopener">WhatsApp (43) 98813-5787</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/campuscllub" target="_blank" rel="noopener">Instagram @campuscllub</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <!-- Botão Flutuante -->
-    <a href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20eventos%20no%20CampusClub." target="_blank" class="whatsapp-float">
-        WhatsApp • Orçamento
-    </a>
+<footer>
+  <div class="container footer-inner">
+    <div><strong>CampusClub</strong> — Locação de espaços e organização de eventos • Londrina – PR</div>
+    <div class="footer-links">
+      <a href="https://wa.me/5543988135787" target="_blank" rel="noopener">WhatsApp: (43) 98813-5787</a>
+      <a href="https://www.instagram.com/campuscllub" target="_blank" rel="noopener">@campuscllub</a>
+    </div>
+  </div>
+</footer>
 
-    <footer>
-        <p><strong>CampusClub</strong> — Locação de Espaços e Organização de Eventos • Londrina – PR</p>
-        <p style="margin-top: 0.4rem;">WhatsApp: (43) 98813-5787</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/campuscllub" target="_blank">
-                📷 Acompanhe no Instagram: @campuscllub
-            </a>
-        </div>
-    </footer></body></html>
+<a class="wa-float" href="https://wa.me/5543988135787?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20eventos%20no%20CampusClub." target="_blank" rel="noopener">WhatsApp • Orçamento</a>
+
+<script>
+  /* ===== Depoimentos =====
+     Adicione depoimentos REAIS de clientes (com autorização) neste array:
+     { text: "…", name: "Nome", event: "Tipo de evento" }
+     Enquanto estiver vazio, a seção mostra um convite para ver os eventos no Instagram. */
+  const TESTIMONIALS = [];
+
+  const mount = document.getElementById('testimonialsMount');
+  if (TESTIMONIALS.length) {
+    mount.className = 't-grid';
+    TESTIMONIALS.forEach((t, i) => {
+      const fig = document.createElement('figure');
+      fig.className = 't-card reveal';
+      fig.style.setProperty('--d', (i * 0.1) + 's');
+      const bq = document.createElement('blockquote');
+      bq.textContent = t.text;
+      const cap = document.createElement('figcaption');
+      cap.textContent = t.name;
+      if (t.event) { const s = document.createElement('small'); s.textContent = t.event; cap.appendChild(s); }
+      fig.append(bq, cap);
+      mount.appendChild(fig);
+    });
+  } else {
+    mount.innerHTML = `
+      <div class="t-empty reveal">
+        <h3>Veja os eventos de verdade</h3>
+        <p>Acompanhe no Instagram as festas, decorações e montagens realizadas no CampusClub e os comentários de quem já passou por aqui.</p>
+        <a class="btn btn-ghost" href="https://www.instagram.com/campuscllub" target="_blank" rel="noopener">Ver @campuscllub</a>
+      </div>`;
+  }
+
+  /* Header com fundo ao rolar */
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Menu mobile */
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  const setMenu = open => {
+    links.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  };
+  toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  links.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+
+  /* Animações de entrada ao rolar */
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); obs.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
+
+
